@@ -1,0 +1,241 @@
+<!doctype html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Geonames API Project</title>
+
+		<meta name="author" content="Fraser Mushet">
+		<meta name="description" content="Geonames API Projet PHP/AJAX/JSON/CURL">
+
+		<link rel="icon" href="favicon.ico"/>
+		<link rel="stylesheet" href="./css/index.css">
+	</head>
+
+	<body>
+
+		<table id="info">
+			<thead>
+				<tr>
+					<th>
+						API Name 
+					</th>
+					<th>
+						API Description
+					</th>
+					<th>
+						
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>
+						weather
+					</td>
+					<td>
+						Returns weather observations from a weather station which is found within the parameters. 
+						The parameters used are North, South, East and West, coordinates of bounding box.<br>
+						Latitiude max and min values of 90 and -90. 
+						Longitude man and min 180 and -180.<br>
+						Example: Berlin will be covered with coordinates N=52.5, S=52.1, W=12.3 & E=14.2<br>
+						<label for="north">North:</label>
+						<input type="number" name="north" id="north"><br>
+						<label for="south">South:</label>
+						<input type="number" name="south" id="south"><br>
+						<label for="west">West:</label>
+						<input type="number" name="west" id="west" ><br>
+						<label for="east">East:</label>
+						<input type="number" name="east" id="east"><br>
+					</td>
+					<td>
+						<button id="btnWeather">Submit</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						timezone
+					</td>
+					<td>
+						Returns the country, sunrise and sunset times, time and timezone ID of location. 
+						The parameters are latitude and longitude coordinates.
+						The numbers are in decimal degrees format and range from -90 to 90 for latitude and -180 to 180 for longitude.<br>
+						Example: Edinburgh coordinates are latitude = 55.9 and longitude = -3.2<br>
+						<label for="lat">Latitude:</label>
+						<input type="number" name="lat" id="lat" value=47.01><br>
+						<label for="long">Longitude:</label>
+						<input type="number" name="lng" id="lng" value=10.2><br>
+					</td>
+					<td>
+						<button id="btnTimezone">Submit</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						neighbours
+					</td>
+					<td>
+						Returns the number of neighbours and the names of the neighbours of a selected country. 
+						<select id="selCountry">
+							<option value="2782113">Austria</option>
+							<option value="357994">Egypt</option>
+							<option value="3932488">Peru</option>
+							<option value="1562822">Vietnam</option>
+						</select>
+					</td>
+					<td>
+						<button id="btnNeighbours">Submit</button>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+
+		<br><br>
+
+		<div id="results">
+			
+			<table>
+				<caption>Weather</caption>
+				<tr>
+					<td>
+						Station Name: 
+					</td>
+					<td id="txtStationName">
+						
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>
+						Temperature: 
+					</td>
+					<td id="txtTemperature">
+						
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>
+						Humidity: 
+					</td>
+					<td id="txtHumidity">
+						
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>
+						Clouds: 
+					</td>
+					<td id="txtClouds">
+						
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>
+						Wind Speed: 
+					</td>
+					<td id="txtWindSpeed">
+						
+					</td>
+
+				</tr>
+
+			</table>
+			
+			<table>
+				<caption>Timezone</caption>
+				<tr>
+					<td>
+						Country Name: 
+					</td>
+					<td id="txtCountryName">
+						
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>
+						Sunrise: 
+					</td>
+					<td id="txtSunrise">
+						
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>
+						Sunset: 
+					</td>
+					<td id="txtSunset">
+						
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>
+						Time: 
+					</td>
+					<td id="txtTime">
+						
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>
+						Timezone ID: 
+					</td>
+					<td id="txtTimezoneId">
+						
+					</td>
+
+				</tr>
+
+			</table>
+			
+			<table>
+				<caption>Neighbours</caption>
+				<tr>
+					<td>
+						Number of Neighbours: 
+					</td>
+					<td id="txtNumOfNeighbours">
+						
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>
+						Country Neighbours: 
+					</td>
+					<td id="txtCountryNeighbour">
+						
+					</td>
+
+				</tr>
+
+			</table>
+
+		</div>
+
+		<script type="application/javascript" src="./vendors/jquery-2.2.3.min.js"></script>
+		<script type="application/javascript" src="./js/script.js"></script>
+
+	</body>
+
+</html>
