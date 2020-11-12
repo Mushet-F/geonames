@@ -8,24 +8,34 @@ $(window).on('load', function () {
 
 $('#btnWeather').click(function() {
 
-    const north = $('#north').val();
-    const south = $('#south').val();
-    const east = $('#east').val();
-    const west = $('#west').val();
+    $.ajax({
+        url: "php/getWeather.php",
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            north: $('#north').val(),
+            south: $('#south').val(),
+            east : $('#east').val(),
+            west : $('#west').val()
+        },
+        success: function(result) {
 
-    const url = 'http://api.geonames.org/weatherJSON?formatted=true&north=' + north + '&south=' + south + '&east=' + east +'&west=' + west  + '&username=mushetf&style=full';
+        console.log(result);
 
-    $.getJSON(url, function (data) {
+        if (result.status.name == "ok") {
 
-        console.log(data);
-        
-        $('#txtStationName').html(data['weatherObservations'][0]['stationName']);
-        $('#txtTemperature').html(data['weatherObservations'][0]['temperature']);
-        $('#txtHumidity').html(data['weatherObservations'][0]['humidity']);
-        $('#txtClouds').html(data['weatherObservations'][0]['clouds']);
-        $('#txtWindSpeed').html(data['weatherObservations'][0]['windSpeed']);
+            $('#txtStationName').html(result['data']['weatherObservations'][0]['stationName']);
+            $('#txtTemperature').html(result['data']['weatherObservations'][0]['temperature']);
+            $('#txtHumidity').html(result['data']['weatherObservations'][0]['humidity']);
+            $('#txtClouds').html(result['data']['weatherObservations'][0]['clouds']);
+            $('#txtWindSpeed').html(result['data']['weatherObservations'][0]['windSpeed']);
+        }
 
-    });
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    }); 
 
 });
 
