@@ -2,9 +2,7 @@
 
 	$executionStartTime = microtime(true) / 1000;
 	
-    // $url = 'http://api.geonames.org/weatherJSON?formatted=true&north=' . $_REQUEST['north'] . '&south=' . $_REQUEST['south'] . '&east=' . $_REQUEST['east'] .'&west=' . $_REQUEST['west']  . '&username=mushetf&style=full';
-    $url = 'http://api.geonames.org/weatherJSON?formatted=true&north=52.5&south=52.1&east=14.2&west=12.3&username=mushetf&style=full';
-
+    $url = 'http://api.geonames.org/weatherJSON?formatted=true&north=' . $_REQUEST['north'] . '&south=' . $_REQUEST['south'] . '&east=' . $_REQUEST['east'] .'&west=' . $_REQUEST['west']  . '&username=mushetf&style=full';
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -15,8 +13,7 @@
 
 	curl_close($ch);
 
-    $decode = json_decode($result,true);
-    // print_r($decode);	
+    $decode = json_decode($result,true);	
 
 	$output['status']['code'] = "200";
 	$output['status']['name'] = "ok";
